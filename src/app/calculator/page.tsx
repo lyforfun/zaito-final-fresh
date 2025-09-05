@@ -5,8 +5,7 @@ export default function CalculatorPage() {
   const [amount, setAmount] = useState(100000)
   const [term, setTerm] = useState(30)
   const [rate, setRate] = useState(0.99) // Daily rate in percent
- const [result, setResult] = useState<{ totalInterest: string; totalRepayment: string; dailyPayment: string; } | null>(null);
-
+  const [result, setResult] = useState<{ totalInterest: string; totalRepayment: string; dailyPayment: string; } | null>(null);
   const calculateLoan = () => {
     const dailyRateDecimal = rate / 100
     const totalInterest = amount * dailyRateDecimal * term
