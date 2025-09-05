@@ -1,24 +1,34 @@
 'use client';
-import { useState } from 'react'
+import { useState } from 'react';
+
+// 1. Определяем тип для результата расчета
+type CalculationResult = {
+  totalInterest: string;
+  totalRepayment: string;
+  dailyPayment: string;
+};
 
 export default function CalculatorPage() {
-  const [amount, setAmount] = useState(100000)
-  const [term, setTerm] = useState(30)
-  const [rate, setRate] = useState(0.99) // Daily rate in percent
- const [result, setResult] = useState<{ totalInterest: string; totalRepayment: string; dailyPayment: string; } | null>(null);
+  const [amount, setAmount] = useState(100000);
+  const [term, setTerm] = useState(30);
+  const [rate, setRate] = useState(0.99);
 
+  // 2. Используем наш тип в состоянии
+  const [result, setResult] = useState<CalculationResult | null>(null);
+
+  // 3. Создаем функцию для расчета
   const calculateLoan = () => {
-    const dailyRateDecimal = rate / 100
-    const totalInterest = amount * dailyRateDecimal * term
-    const totalRepayment = amount + totalInterest
-    const dailyPayment = totalRepayment / term
+    const dailyRateDecimal = rate / 100;
+    const totalInterest = amount * dailyRateDecimal * term;
+    const totalRepayment = amount + totalInterest;
+    const dailyPayment = totalRepayment / term;
 
     setResult({
       totalInterest: totalInterest.toFixed(2),
       totalRepayment: totalRepayment.toFixed(2),
       dailyPayment: dailyPayment.toFixed(2),
-    })
-  }
+    });
+  };
 
   return (
     <div className="bg-white py-16">
@@ -38,8 +48,8 @@ export default function CalculatorPage() {
             <input
               type="range"
               id="amount"
-              min="10000" 
-              max="500000" 
+              min="10000"
+              max="500000"
               step="10000"
               value={amount}
               onChange={(e) => setAmount(Number(e.target.value))}
@@ -59,8 +69,8 @@ export default function CalculatorPage() {
             <input
               type="range"
               id="term"
-              min="5" 
-              max="60" 
+              min="5"
+              max="60"
               step="1"
               value={term}
               onChange={(e) => setTerm(Number(e.target.value))}
@@ -80,8 +90,8 @@ export default function CalculatorPage() {
             <input
               type="number"
               id="rate"
-              min="0.1" 
-              max="2.5" 
+              min="0.1"
+              max="2.5"
               step="0.01"
               value={rate}
               onChange={(e) => setRate(Number(e.target.value))}
@@ -131,6 +141,5 @@ export default function CalculatorPage() {
         )}
       </div>
     </div>
-  )
+  );
 }
-

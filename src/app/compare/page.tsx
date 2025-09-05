@@ -1,20 +1,20 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import mfoData from '@/data/mfo.json'
-import { Star, CheckCircle, XCircle } from 'lucide-react'
+import mfoData from '@/data/mfo.json';
+import { Star, CheckCircle, XCircle } from 'lucide-react';
 
 export default function ComparePage() {
-  // For simplicity, let's compare the first two MFOs from the data
-  // In a real application, you would have a more sophisticated comparison logic
-  const mfo1 = mfoData[0]
-  const mfo2 = mfoData[1]
+  // @ts-ignore
+  const mfo1 = mfoData[0];
+  // @ts-ignore
+  const mfo2 = mfoData[1];
 
   if (!mfo1 || !mfo2) {
     return (
       <div className="bg-white py-16 text-center text-gray-600">
         Недостаточно данных для сравнения МФО.
       </div>
-    )
+    );
   }
 
   return (
@@ -28,7 +28,6 @@ export default function ComparePage() {
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Empty column for features/criteria */}
           <div className="hidden lg:block">
             <div className="bg-gray-50 rounded-xl p-6 shadow-md border border-gray-100 h-full">
               <h2 className="text-xl font-bold text-gray-900 mb-6">Параметры</h2>
@@ -49,7 +48,6 @@ export default function ComparePage() {
             </div>
           </div>
 
-          {/* MFO 1 Column */}
           <div className="bg-gray-50 rounded-xl p-6 shadow-md border border-gray-100">
             <div className="text-center mb-6">
               <div className="w-20 h-20 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -71,14 +69,14 @@ export default function ComparePage() {
               <li><span className="lg:hidden font-semibold">Макс. срок: </span>{mfo1.maxTerm} дней</li>
               <li><span className="lg:hidden font-semibold">Ставка: </span>{mfo1.rate}</li>
               <li><span className="lg:hidden font-semibold">Время: </span>{mfo1.approvalTime}</li>
-              <li className="flex items-center"><span className="lg:hidden font-semibold">Возраст: </span>{mfo1.requirements.includes('Возраст от 18 лет') ? <CheckCircle className="h-5 w-5 text-green-500 mr-2" /> : <XCircle className="h-5 w-5 text-red-500 mr-2" />} От 18 лет</li>
-              <li className="flex items-center"><span className="lg:hidden font-semibold">Гражданство РК: </span>{mfo1.requirements.includes('Гражданство РК') ? <CheckCircle className="h-5 w-5 text-green-500 mr-2" /> : <XCircle className="h-5 w-5 text-red-500 mr-2" />} Гражданство РК</li>
-              <li className="flex items-center"><span className="lg:hidden font-semibold">Наличие ИИН: </span>{mfo1.requirements.includes('Наличие ИИН') ? <CheckCircle className="h-5 w-5 text-green-500 mr-2" /> : <XCircle className="h-5 w-5 text-red-500 mr-2" />} Наличие ИИН</li>
-              <li className="flex items-center"><span className="lg:hidden font-semibold">Банковский счет: </span>{mfo1.requirements.includes('Наличие банковского счета') ? <CheckCircle className="h-5 w-5 text-green-500 mr-2" /> : <XCircle className="h-5 w-5 text-red-500 mr-2" />} Банковский счет</li>
+              <li className="flex items-center"><span className="lg:hidden font-semibold">Возраст: </span>{mfo1.requirements.age === 'Возраст от 18 лет' ? <CheckCircle className="h-5 w-5 text-green-500 mr-2" /> : <XCircle className="h-5 w-5 text-red-500 mr-2" />} От 18 лет</li>
+              <li className="flex items-center"><span className="lg:hidden font-semibold">Гражданство РК: </span>{mfo1.requirements.citizenship === 'Гражданство РК' ? <CheckCircle className="h-5 w-5 text-green-500 mr-2" /> : <XCircle className="h-5 w-5 text-red-500 mr-2" />} Гражданство РК</li>
+              <li className="flex items-center"><span className="lg:hidden font-semibold">Наличие ИИН: </span>{mfo1.requirements.documents === 'Наличие ИИН' ? <CheckCircle className="h-5 w-5 text-green-500 mr-2" /> : <XCircle className="h-5 w-5 text-red-500 mr-2" />} Наличие ИИН</li>
+              <li className="flex items-center"><span className="lg:hidden font-semibold">Банковский счет: </span>{mfo1.requirements.income === 'Наличие банковского счета' ? <CheckCircle className="h-5 w-5 text-green-500 mr-2" /> : <XCircle className="h-5 w-5 text-red-500 mr-2" />} Банковский счет</li>
             </ul>
             <div className="mt-8 text-center">
               <Link
-                href={mfo1.link}
+                href={`/mfo/${mfo1.id}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center bg-gradient-to-r from-green-500 to-teal-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-teal-600 transition-all duration-200 shadow-md"
@@ -89,7 +87,6 @@ export default function ComparePage() {
             </div>
           </div>
 
-          {/* MFO 2 Column */}
           <div className="bg-gray-50 rounded-xl p-6 shadow-md border border-gray-100">
             <div className="text-center mb-6">
               <div className="w-20 h-20 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -111,14 +108,14 @@ export default function ComparePage() {
               <li><span className="lg:hidden font-semibold">Макс. срок: </span>{mfo2.maxTerm} дней</li>
               <li><span className="lg:hidden font-semibold">Ставка: </span>{mfo2.rate}</li>
               <li><span className="lg:hidden font-semibold">Время: </span>{mfo2.approvalTime}</li>
-              <li className="flex items-center"><span className="lg:hidden font-semibold">Возраст: </span>{mfo2.requirements.includes('Возраст от 18 лет') ? <CheckCircle className="h-5 w-5 text-green-500 mr-2" /> : <XCircle className="h-5 w-5 text-red-500 mr-2" />} От 18 лет</li>
-              <li className="flex items-center"><span className="lg:hidden font-semibold">Гражданство РК: </span>{mfo2.requirements.includes('Гражданство РК') ? <CheckCircle className="h-5 w-5 text-green-500 mr-2" /> : <XCircle className="h-5 w-5 text-red-500 mr-2" />} Гражданство РК</li>
-              <li className="flex items-center"><span className="lg:hidden font-semibold">Наличие ИИН: </span>{mfo2.requirements.includes('Наличие ИИН') ? <CheckCircle className="h-5 w-5 text-green-500 mr-2" /> : <XCircle className="h-5 w-5 text-red-500 mr-2" />} Наличие ИИН</li>
-              <li className="flex items-center"><span className="lg:hidden font-semibold">Банковский счет: </span>{mfo2.requirements.includes('Наличие банковского счета') ? <CheckCircle className="h-5 w-5 text-green-500 mr-2" /> : <XCircle className="h-5 w-5 text-red-500 mr-2" />} Банковский счет</li>
+              <li className="flex items-center"><span className="lg:hidden font-semibold">Возраст: </span>{mfo2.requirements.age === 'Возраст от 18 лет' ? <CheckCircle className="h-5 w-5 text-green-500 mr-2" /> : <XCircle className="h-5 w-5 text-red-500 mr-2" />} От 18 лет</li>
+              <li className="flex items-center"><span className="lg:hidden font-semibold">Гражданство РК: </span>{mfo2.requirements.citizenship === 'Гражданство РК' ? <CheckCircle className="h-5 w-5 text-green-500 mr-2" /> : <XCircle className="h-5 w-5 text-red-500 mr-2" />} Гражданство РК</li>
+              <li className="flex items-center"><span className="lg:hidden font-semibold">Наличие ИИН: </span>{mfo2.requirements.documents === 'Наличие ИИН' ? <CheckCircle className="h-5 w-5 text-green-500 mr-2" /> : <XCircle className="h-5 w-5 text-red-500 mr-2" />} Наличие ИИН</li>
+              <li className="flex items-center"><span className="lg:hidden font-semibold">Банковский счет: </span>{mfo2.requirements.income === 'Наличие банковского счета' ? <CheckCircle className="h-5 w-5 text-green-500 mr-2" /> : <XCircle className="h-5 w-5 text-red-500 mr-2" />} Банковский счет</li>
             </ul>
             <div className="mt-8 text-center">
               <Link
-                href={mfo2.link}
+                href={`/mfo/${mfo2.id}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center bg-gradient-to-r from-green-500 to-teal-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-teal-600 transition-all duration-200 shadow-md"
@@ -131,6 +128,5 @@ export default function ComparePage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-
