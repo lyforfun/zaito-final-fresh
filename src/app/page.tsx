@@ -262,7 +262,7 @@ export default function HomePage() {
       className={`h-4 w-4 ${i < review.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} 
     />
   ))}
-</div> // <--- ...А ВОТ ТЕПЕРЬ ОН ЗАКРЫТ!
+</div>
 
 <p className="text-gray-700 text-sm leading-relaxed">
   &quot;{review.text}&quot;
