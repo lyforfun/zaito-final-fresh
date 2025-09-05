@@ -78,7 +78,7 @@ export default function ComparePage() {
             </ul>
             <div className="mt-8 text-center">
               <Link
-                href={mfo1.link}
+               href={\/mfo/${mfo1.id}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center bg-gradient-to-r from-green-500 to-teal-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-teal-600 transition-all duration-200 shadow-md"
@@ -118,8 +118,8 @@ export default function ComparePage() {
             </ul>
             <div className="mt-8 text-center">
               <Link
-                href={mfo2.link}
-                target="_blank"
+        href={\/mfo/${mfo2.id}`}`
+              target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center bg-gradient-to-r from-green-500 to-teal-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-teal-600 transition-all duration-200 shadow-md"
               >
