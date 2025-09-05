@@ -1,16 +1,20 @@
 'use client';
-import { useState } from 'react'
+import { useState } from 'react';
+
+// 1. Создаем отдельный тип для результата
+type CalculationResult = {
+  totalInterest: string;
+  totalRepayment: string;
+  dailyPayment: string;
+};
 
 export default function CalculatorPage() {
-  const [amount, setAmount] = useState(100000)
-  const [term, setTerm] = useState(30)
-  const [rate, setRate] = useState(0.99) // Daily rate in percent
-  const [result, setResult] = useState<{ totalInterest: string; totalRepayment: string; dailyPayment: string; } | null>(null);
-  const calculateLoan = () => {
-    const dailyRateDecimal = rate / 100
-    const totalInterest = amount * dailyRateDecimal * term
-    const totalRepayment = amount + totalInterest
-    const dailyPayment = totalRepayment / term
+  const [amount, setAmount] = useState(100000);
+  const [term, setTerm] = useState(30);
+  const [rate, setRate] = useState(0.99); // Daily rate in percent
+  // 2. Используем наш новый тип в useState
+  const [result, setResult] = useState<CalculationResult | null>(null);
+
 
     setResult({
       totalInterest: totalInterest.toFixed(2),
