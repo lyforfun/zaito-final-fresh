@@ -1,20 +1,20 @@
-
-
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import mfoData from '@/data/mfo.json'
-import { Star, CheckCircle, XCircle } from 'lucide-react'
+import mfoData from '@/data/mfo.json';
+import { Star, CheckCircle, XCircle } from 'lucide-react';
 
 export default function ComparePage() {
-  const mfo1 = mfoData[0]
-  const mfo2 = mfoData[1]
+  // @ts-ignore
+  const mfo1 = mfoData[0];
+  // @ts-ignore
+  const mfo2 = mfoData[1];
 
   if (!mfo1 || !mfo2) {
     return (
       <div className="bg-white py-16 text-center text-gray-600">
         Недостаточно данных для сравнения МФО.
       </div>
-    )
+    );
   }
 
   return (
@@ -28,7 +28,6 @@ export default function ComparePage() {
         </p>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Empty column for features/criteria */}
           <div className="hidden lg:block">
             <div className="bg-gray-50 rounded-xl p-6 shadow-md border border-gray-100 h-full">
               <h2 className="text-xl font-bold text-gray-900 mb-6">Параметры</h2>
@@ -49,7 +48,6 @@ export default function ComparePage() {
             </div>
           </div>
 
-          {/* MFO 1 Column */}
           <div className="bg-gray-50 rounded-xl p-6 shadow-md border border-gray-100">
             <div className="text-center mb-6">
               <div className="w-20 h-20 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -78,7 +76,7 @@ export default function ComparePage() {
             </ul>
             <div className="mt-8 text-center">
               <Link
-               href={\/mfo/${mfo1.id}`}
+                href={`/mfo/${mfo1.id}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center bg-gradient-to-r from-green-500 to-teal-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-teal-600 transition-all duration-200 shadow-md"
@@ -89,7 +87,6 @@ export default function ComparePage() {
             </div>
           </div>
 
-          {/* MFO 2 Column */}
           <div className="bg-gray-50 rounded-xl p-6 shadow-md border border-gray-100">
             <div className="text-center mb-6">
               <div className="w-20 h-20 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -118,8 +115,8 @@ export default function ComparePage() {
             </ul>
             <div className="mt-8 text-center">
               <Link
-        href={\/mfo/${mfo2.id}`}`
-              target="_blank"
+                href={`/mfo/${mfo2.id}`}
+                target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center bg-gradient-to-r from-green-500 to-teal-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-teal-600 transition-all duration-200 shadow-md"
               >
@@ -131,5 +128,5 @@ export default function ComparePage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
