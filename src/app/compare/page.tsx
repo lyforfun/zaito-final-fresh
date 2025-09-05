@@ -1,5 +1,4 @@
-// @ts-nocheck
-// This directive disables TypeScript checking for this file.
+
 
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
