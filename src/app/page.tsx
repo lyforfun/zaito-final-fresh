@@ -255,7 +255,7 @@ export default function HomePage() {
                   )}
                 </div>
                 
-                 <div className="flex items-center"> // <--- Этот div открыт...
+                 <div className="flex items-center">
   {[...Array(5)].map((_, i) => (
     <Star 
       key={i} 
