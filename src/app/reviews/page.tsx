@@ -36,7 +36,6 @@ export default function ReviewsPage() {
                   />
                 ))}
               </div>
-              // Final check
 
               <p className="text-gray-700 leading-relaxed mb-4">
   &quot;{review.text}&quot;
