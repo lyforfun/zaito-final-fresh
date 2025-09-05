@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 
-// 1. Создаем отдельный тип для результата
 type CalculationResult = {
   totalInterest: string;
   totalRepayment: string;
@@ -12,7 +11,7 @@ export default function CalculatorPage() {
   const [amount, setAmount] = useState(100000);
   const [term, setTerm] = useState(30);
   const [rate, setRate] = useState(0.99); // Daily rate in percent
-  // 2. Используем наш новый тип в useState
+
   const [result, setResult] = useState<CalculationResult | null>(null);
 
 
